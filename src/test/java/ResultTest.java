@@ -9,7 +9,7 @@ public class ResultTest {
 
     //arrays with suffix "Test" start with n (number of students); arrays with out this suffix are the expected result
     private static Integer[] negativeGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37};
-    private static Integer[] negativeGradesTest= {38, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37};}
+    private static Integer[] negativeGradesTest= {38, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37};
     private static Integer[] eightAndThreeTest = {13, 38, 43, 48, 53, 58, 63, 68, 73, 78, 83, 88, 93, 98};
     private static Integer[] nineAndFourTest = {13, 39, 44, 49, 54, 59, 64, 69, 74, 79, 84, 89, 94, 99};
     private static Integer[] zeroAndFive = {40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, 95, 100};
