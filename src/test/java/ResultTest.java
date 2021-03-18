@@ -1,9 +1,12 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ResultTest {
 
@@ -87,6 +90,51 @@ public class ResultTest {
         List<Integer> actual = Result.gradingStudents(Arrays.asList(twoAndSevenTest));
         List<Integer> expected = Arrays.asList(twoAndSeven);
         assertEquals(expected,actual);
+    }
+
+    @Test
+        /*
+        Exception thrown when no list is provided for gradingStudents.
+         */
+    void testGradingStudents_Null(){
+        assertThrows(NullPointerException.class, () -> Result.gradingStudents(Arrays.asList(null)), "No List for gradingStudents provided!");
+    }
+
+    @Test
+    @ValueSource(ints = {-1, 101})
+        /*
+        Exception thrown when provided list contains at least one grade which is below 0 or above 100.
+         */
+    void gradingStudentsThrowsGradeOutOfBoundsException(int add){
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        arrayList.add(1);
+        arrayList.add(add);
+        assertThrows(GradeOutOfBoundsException.class, () -> Result.gradingStudents(arrayList), "At least one grade in your list is lower than 0 or higher than 100!");
+    }
+
+    @Test
+    @ValueSource(ints = {0, 61})
+        /*
+        Exception thrown when it's indicated that the provided list contains less than one or more than 60 grades.
+         */
+    void gradingStudentsThrowsStudentsOutOfBoundsException(int add){
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        arrayList.add(add);
+        arrayList.add(1);
+        assertThrows(StudentsOutOfBoundsException.class, () -> Result.gradingStudents(arrayList), "The provided number of students is not within the boundaries (1-60)!");
+    }
+
+    @Test
+    @ValueSource(ints = {1, 3})
+        /*
+        Exception thrown when first number in provided list doesn't match the number of students.
+         */
+    void gradingStudentsThrowsMissMatchException(int add){
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        arrayList.add(add);
+        arrayList.add(1);
+        arrayList.add(2);
+        assertThrows(MissMatchException.class, () -> Result.gradingStudents(arrayList), "The first number of the list provided does not match the number of grades!");
     }
 
 }
