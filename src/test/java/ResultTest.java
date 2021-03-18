@@ -9,6 +9,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+// Repo-Link: https://github.com/BenediktWeissenbach/prog2-ss21-exercise1.git
+
 public class ResultTest {
 
     //arrays with suffix "Test" start with n (number of students); arrays with out this suffix are the expected result
