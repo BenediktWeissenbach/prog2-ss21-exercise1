@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class ResultTest {
         Each grade in negativeGrades is lower than 38
         Therefore gradingStudents should not change the grades negativeGrades
          */
-    void testGradingStudents_negativeGrades(){
+    void testGradingStudents_negativeGrades() throws StudentsOutOfBoundsException, MissMatchException, GradeOutOfBoundsException {
         List<Integer> actual = Result.gradingStudents(Arrays.asList(negativeGradesTest));
         List<Integer> expected = Arrays.asList(negativeGrades);
         assertEquals(expected,actual);
@@ -40,7 +41,7 @@ public class ResultTest {
         Hence gradingStudents should change the list eightAndThree to a List which is identical to zeroAndFive
         (all grades in zeroAndFive end either with zero or five)
          */
-    void testGradingStudents_eightAndThree(){
+    void testGradingStudents_eightAndThree() throws StudentsOutOfBoundsException, MissMatchException, GradeOutOfBoundsException {
         List<Integer> actual = Result.gradingStudents(Arrays.asList(eightAndThreeTest));
         List<Integer> expected = Arrays.asList(zeroAndFive);
         assertEquals(expected,actual);
@@ -53,7 +54,7 @@ public class ResultTest {
         Hence gradingStudents should change the list eightAndThree to a List which is identical to zeroAndFive
         (all grades in zeroAndFive end either with zero or five)
          */
-    void testGradingStudents_nineAndFour(){
+    void testGradingStudents_nineAndFour() throws StudentsOutOfBoundsException, MissMatchException, GradeOutOfBoundsException {
         List<Integer> actual = Result.gradingStudents(Arrays.asList(nineAndFourTest));
         List<Integer> expected = Arrays.asList(zeroAndFive);
         assertEquals(expected,actual);
@@ -64,7 +65,7 @@ public class ResultTest {
         All grades in zeroAndFive end either with zero or five
         Therefore gradingStudents should not change the grades in zeroAndFive
          */
-    void testGradingStudents_zeroAndFive(){
+    void testGradingStudents_zeroAndFive() throws StudentsOutOfBoundsException, MissMatchException, GradeOutOfBoundsException {
         List<Integer> actual = Result.gradingStudents(Arrays.asList(zeroAndFiveTest));
         List<Integer> expected = Arrays.asList(zeroAndFive);
         assertEquals(expected,actual);
@@ -75,7 +76,7 @@ public class ResultTest {
         All grades in oneAndSix end either with one or six
         Therefore gradingStudents should not change the grades in OneAndSix
          */
-    void testGradingStudents_oneAndSix(){
+    void testGradingStudents_oneAndSix() throws StudentsOutOfBoundsException, MissMatchException, GradeOutOfBoundsException {
         List<Integer> actual = Result.gradingStudents(Arrays.asList(OneAndSixTest));
         List<Integer> expected = Arrays.asList(OneAndSix);
         assertEquals(expected,actual);
@@ -86,7 +87,7 @@ public class ResultTest {
         All grades in twoAndSeven end either with two or seven
         Therefore gradingStudents should not change the grades in twoAndSeven
          */
-    void testGradingStudents_twoAndSeven(){
+    void testGradingStudents_twoAndSeven() throws StudentsOutOfBoundsException, MissMatchException, GradeOutOfBoundsException {
         List<Integer> actual = Result.gradingStudents(Arrays.asList(twoAndSevenTest));
         List<Integer> expected = Arrays.asList(twoAndSeven);
         assertEquals(expected,actual);
@@ -100,7 +101,7 @@ public class ResultTest {
         assertThrows(NullPointerException.class, () -> Result.gradingStudents(Arrays.asList(null)), "No List for gradingStudents provided!");
     }
 
-    @Test
+    @ParameterizedTest
     @ValueSource(ints = {-1, 101})
         /*
         Exception thrown when provided list contains at least one grade which is below 0 or above 100.
@@ -112,7 +113,7 @@ public class ResultTest {
         assertThrows(GradeOutOfBoundsException.class, () -> Result.gradingStudents(arrayList), "At least one grade in your list is lower than 0 or higher than 100!");
     }
 
-    @Test
+    @ParameterizedTest
     @ValueSource(ints = {0, 61})
         /*
         Exception thrown when it's indicated that the provided list contains less than one or more than 60 grades.
@@ -124,7 +125,7 @@ public class ResultTest {
         assertThrows(StudentsOutOfBoundsException.class, () -> Result.gradingStudents(arrayList), "The provided number of students is not within the boundaries (1-60)!");
     }
 
-    @Test
+    @ParameterizedTest
     @ValueSource(ints = {1, 3})
         /*
         Exception thrown when first number in provided list doesn't match the number of students.
